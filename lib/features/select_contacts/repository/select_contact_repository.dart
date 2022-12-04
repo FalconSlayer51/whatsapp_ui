@@ -44,15 +44,21 @@ class SelectContactRepository {
                   '',
                 );
         if (selectedPhoneNum == userData.phoneNumber) {
+          //showSnackBar(context: context, content: "${userData.phoneNumber}");
           ifFound = true;
-          Navigator.pushNamed(
-            context,
-            MobileChatScreen.routeName,
-            arguments: {
-              'name': userData.name,
-              'uid': userData.uid,
-            },
-          );
+          Navigator.pushNamed(context, MobileChatScreen.routeName, arguments: {
+            'name': userData.name,
+            'uid': userData.uid,
+            'profilePic': '',
+          });
+          // Navigator.pushNamed(
+          //   context,
+          //   MobileChatScreen.routeName,
+          //   arguments: {
+          //     'name': userData.name,
+          //     'uid': userData.uid,
+          //   },
+          // );
         }
       }
 

@@ -81,29 +81,26 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                //  showSnackBar(context: context, content: 'search');
-                setState(() {
-                  showSearchBar = !showSearchBar;
-                  searchval = '';
-                  //  showSnackBar(context: context, content: '$showSearchBar');
-                });
-              },
-              icon: Icon(Icons.more_vert),
-            )
-          ],
+          // actions: [
+          //   IconButton(
+          //     onPressed: () {
+          //       //  showSnackBar(context: context, content: 'search');
+          //       setState(() {
+          //         showSearchBar = !showSearchBar;
+          //         searchval = '';
+          //         //  showSnackBar(context: context, content: '$showSearchBar');
+          //       });
+          //     },
+          //     icon: Icon(Icons.more_vert),
+          //   )
+          // ],
           leading: GestureDetector(
             onTap: () {
               showSnackBar(context: context, content: 'Pic was clicked');
             },
             child: Container(
               margin: const EdgeInsets.only(left: 20),
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(widget.user!.profilePic),
-                radius: 50,
-              ),
+              child: Icon(Icons.menu),
             ),
           ),
           systemOverlayStyle: SystemUiOverlayStyle(
