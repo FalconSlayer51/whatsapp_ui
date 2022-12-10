@@ -7,6 +7,8 @@ class Call {
   final String receiverPic;
   final String callId;
   final bool hasDialled;
+  final bool isLifted;
+  final String type;
   Call({
     required this.callerId,
     required this.callerName,
@@ -16,6 +18,8 @@ class Call {
     required this.receiverPic,
     required this.callId,
     required this.hasDialled,
+    required this.isLifted,
+    required this.type,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,6 +32,8 @@ class Call {
       'receiverPic': receiverPic,
       'callId': callId,
       'hasDialled': hasDialled,
+      'isLifted': isLifted,
+      'type': type,
     };
   }
 
@@ -41,6 +47,8 @@ class Call {
       receiverPic: map['receiverPic'] ?? '',
       callId: map['callId'] ?? '',
       hasDialled: map['hasDialled'] ?? false,
+      isLifted: map['isLifted'] ?? false,
+      type: map['type'] ?? '',
     );
   }
 }

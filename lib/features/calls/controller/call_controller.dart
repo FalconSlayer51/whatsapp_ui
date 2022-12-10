@@ -32,6 +32,8 @@ class CallController {
         receiverPic: receiverProfilePic,
         callId: callId,
         hasDialled: true,
+        isLifted: false,
+        type: 'videoCall',
       );
 
       Call recieverCallData = Call(
@@ -43,8 +45,43 @@ class CallController {
         receiverPic: receiverProfilePic,
         callId: callId,
         hasDialled: false,
+        isLifted: false,
+        type: 'videoCall',
       );
-        callRepository.makeCall(senderCallData, context, recieverCallData);
+      callRepository.makeCall(senderCallData, context, recieverCallData);
+    });
+  }
+
+  void makeVoiceCall(BuildContext context, String receiverName,
+      String receiverUid, String receiverProfilePic, bool isGroupChat) {
+    ref.read(userDataAuthProvider).whenData((value) {
+      String callId = const Uuid().v1();
+      Call senderCallData = Call(
+        callerId: auth.currentUser!.uid,
+        callerName: value!.name,
+        callerPic: value.profilePic,
+        receiverId: receiverUid,
+        receiverName: receiverName,
+        receiverPic: receiverProfilePic,
+        callId: callId,
+        hasDialled: true,
+        isLifted: false,
+        type: 'voiceCall',
+      );
+
+      Call recieverCallData = Call(
+        callerId: auth.currentUser!.uid,
+        callerName: value.name,
+        callerPic: value.profilePic,
+        receiverId: receiverUid,
+        receiverName: receiverName,
+        receiverPic: receiverProfilePic,
+        callId: callId,
+        hasDialled: false,
+        isLifted: false,
+        type: 'voiceCall',
+      );
+      callRepository.makeVoiceCall(senderCallData, context, recieverCallData);
     });
   }
 
@@ -54,5 +91,9 @@ class CallController {
     BuildContext context,
   ) {
     callRepository.endCall(callerId, receiverId, context);
+  }
+
+  Stream<List<Call>> getCallStream() {
+    return callRepository.getCallData();
   }
 }

@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:whatsapp_ui/auth/controller/authcontroller.dart';
 import 'package:whatsapp_ui/colors.dart';
+import 'package:whatsapp_ui/features/calls/screens/call_list.dart';
 import 'package:whatsapp_ui/features/chat/widgets/contacts_list.dart';
 import 'package:whatsapp_ui/features/chat/widgets/searchresults.dart';
 import 'package:whatsapp_ui/features/select_contacts/screens/select_contacts_screen.dart';
@@ -70,9 +71,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
   List<Widget> screens = [
     ContactsList(),
     StatusContactsScreen(),
-    Center(
-      child: const Text('calls'),
-    ),
+    CallList(),
   ];
 
   @override
@@ -114,7 +113,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
           backgroundColor: appBarColor,
           centerTitle: true,
           title: const Text(
-            'WhatsApp',
+            'ThunderBolt',
             style: TextStyle(
               fontSize: 20,
               color: tabColor,
@@ -152,15 +151,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
           //   ],
           // ),
         ),
-        body: PageView(
-          children: screens,
-          onPageChanged: (value) {
-            setState(() {
-              _index = value;
-            });
-          },
-          controller: _pageController,
-        ), //
+        body: screens[_index],
         //   children: [
         //     showSearchBar == true
         //         ? Container(
@@ -220,61 +211,73 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
             }
           },
           backgroundColor: tabColor,
-          child: const Icon(
-            Icons.comment,
-            color: Colors.white,
-          ),
+          child: _index == 1
+              ? Icon(
+                  Icons.add,
+                  color: Colors.white,
+                )
+              : Icon(
+                  Icons.comment,
+                  color: Colors.white,
+                ),
         ),
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
             canvasColor: mobileChatBoxColor,
           ),
-          child: Container(
-            height: 60,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  tabColor.withOpacity(0.8),
-                  mobileChatBoxColor.withOpacity(0.8)
-                ],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-              ),
-            ),
-            child: BottomNavigationBar(
-              currentIndex: _index,
-              backgroundColor: mobileChatBoxColor,
-              iconSize: 20,
-              elevation: 0,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.chat),
-                  label: 'chats',
-                  backgroundColor: tabColor,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.star_half_outlined),
-                  label: 'status',
-                  backgroundColor: tabColor,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.call),
-                  label: 'calls',
-                  backgroundColor: tabColor,
-                ),
-              ],
-              onTap: (currentindex) {
-                setState(() {
-                  _index = currentindex;
-                  _pageController.animateToPage(
-                    _index,
-                    duration: Duration(milliseconds: 200),
-                    curve: Curves.linear,
-                  );
-                });
-              },
-            ),
-          ),
+          child: NavigationBar(
+            height: 80,
+            destinations: const [
+              NavigationDestination(icon: Icon(Icons.chat), label: 'chats'),
+              NavigationDestination(
+                  icon: Icon(Icons.star_half_outlined), label: 'status'),
+              NavigationDestination(icon: Icon(Icons.call), label: 'calls'),
+            ],
+            selectedIndex: _index,
+            onDestinationSelected: (value) {
+              setState(() {
+                _index = value;
+              });
+            },
+          ), // BottomNavigationBar(
+          //   currentIndex: _index,
+          //   backgroundColor: mobileChatBoxColor,
+          //   iconSize: 20,
+          //   elevation: 0,
+          //   items: const [
+          //     BottomNavigationBarItem(
+          //       icon: Icon(
+          //         Icons.chat,
+          //       ),
+          //       label: 'chats',
+          //       backgroundColor: tabColor,
+          //     ),
+          //     BottomNavigationBarItem(
+          //       icon: Icon(
+          //         Icons.star_half_outlined,
+          //       ),
+          //       label: 'status',
+          //       backgroundColor: tabColor,
+          //     ),
+          //     BottomNavigationBarItem(
+          //       icon: Icon(
+          //         Icons.call,
+          //       ),
+          //       label: 'calls',
+          //       backgroundColor: tabColor,
+          //     ),
+          //   ],
+          //   onTap: (currentindex) {
+          //     setState(() {
+          //       _index = currentindex;
+          //       _pageController.animateToPage(
+          //         _index,
+          //         duration: Duration(milliseconds: 200),
+          //         curve: Curves.linear,
+          //       );
+          //     });
+          //   },
+          // ),
         ),
       ),
     );

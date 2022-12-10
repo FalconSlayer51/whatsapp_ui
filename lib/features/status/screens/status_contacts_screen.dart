@@ -23,7 +23,13 @@ class StatusContactsScreen extends ConsumerWidget {
           itemBuilder: (context, index) {
             if (snapshot.data!.isEmpty) {
               return const Center(
-                child: Text('no Stauses'),
+                child: Text(
+                  'no Stauses',
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontSize: 20,
+                  ),
+                ),
               );
             }
             var statusData = snapshot.data![index];
@@ -45,6 +51,7 @@ class StatusContactsScreen extends ConsumerWidget {
                         statusData.username,
                         style: const TextStyle(
                           fontSize: 18,
+                          fontFamily: "Poppins",
                         ),
                       ),
                       leading: CircleAvatar(

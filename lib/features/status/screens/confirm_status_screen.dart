@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp_ui/colors.dart';
 import 'package:whatsapp_ui/features/status/controller/status_controller.dart';
 import 'package:whatsapp_ui/utils/utils.dart';
 // import 'package:stack_trace/stack_trace.dart' as stack_trace;
@@ -45,7 +46,7 @@ class ConfirmStatusScreen extends ConsumerWidget {
         },
         child: const Icon(
           Icons.done,
-          color: Colors.white,
+          color: tabColor,
         ),
       ),
     );

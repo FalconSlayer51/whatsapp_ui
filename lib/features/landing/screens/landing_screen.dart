@@ -30,6 +30,7 @@ class LandingScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 33,
                     fontWeight: FontWeight.w600,
+                    fontFamily: "Poppins",
                   ),
                 ),
                 SizedBox(height: size.height / 9),
@@ -44,7 +45,7 @@ class LandingScreen extends StatelessWidget {
                   padding: EdgeInsets.all(15.0),
                   child: Text(
                     'Read our Privacy Policy. Tap "Agree and continue" to accept the Terms of Service.',
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.grey, fontFamily: "Poppins"),
                     textAlign: TextAlign.center,
                   ),
                 ),

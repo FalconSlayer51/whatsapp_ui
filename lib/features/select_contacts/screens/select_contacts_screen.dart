@@ -22,7 +22,12 @@ class SelectContactScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select contact'),
+        title: const Text(
+          'Select contact',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+          ),
+        ),
         elevation: 0,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
@@ -41,7 +46,11 @@ class SelectContactScreen extends ConsumerWidget {
                       child: ListTile(
                         title: Text(
                           contact.displayName,
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                         leading: contact.photo == null
                             ? null

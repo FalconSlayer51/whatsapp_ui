@@ -61,7 +61,10 @@ class SenderMessageCard extends StatelessWidget {
                       if (isReplying) ...[
                         Text(
                           username,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
+                          ),
                         ),
                         const SizedBox(
                           height: 3,

@@ -55,7 +55,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       appBar: AppBar(
         backgroundColor: backgroundColor,
         elevation: 0,
-        title: const Text("Enter your phone number"),
+        title: const Text(
+          "Enter your phone number",
+          style: TextStyle(
+            fontFamily: 'Poppins',
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
@@ -64,13 +69,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           children: [
             Column(
               children: [
-                const Text("WhatsApp need to verify your phone number"),
+                const Text(
+                  "WhatsApp need to verify your phone number",
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                  ),
+                ),
                 const SizedBox(
                   height: 10,
                 ),
                 TextButton(
-                    onPressed: pickCountry,
-                    child: const Text("pick a country")),
+                  onPressed: pickCountry,
+                  child: const Text(
+                    "pick a country",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: 5,
                 ),

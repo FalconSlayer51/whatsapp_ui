@@ -27,6 +27,12 @@ class MobileChatScreen extends ConsumerWidget {
         .makeCall(context, name, uid, profilePic, false);
   }
 
+  void makeVoiceCall(WidgetRef ref, BuildContext context) {
+    ref
+        .read(callControllerProvider)
+        .makeVoiceCall(context, name, uid, profilePic, false);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CallPickupScreen(
@@ -58,7 +64,7 @@ class MobileChatScreen extends ConsumerWidget {
               icon: const Icon(Icons.video_call),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () => makeVoiceCall(ref, context),
               icon: const Icon(Icons.call),
             ),
             IconButton(

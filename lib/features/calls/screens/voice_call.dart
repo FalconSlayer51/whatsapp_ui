@@ -1,26 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp_ui/features/calls/screens/call_screen.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:whatsapp_ui/features/calls/controller/call_controller.dart';
 import 'package:whatsapp_ui/features/calls/repository/call_repository.dart';
 import 'package:whatsapp_ui/models/call.dart';
 
-final callControllerProvider = Provider((ref) {
-  final callRepository = ref.read(callRepositoryProvider);
-  return CallController(
-    callRepository: callRepository,
-    auth: FirebaseAuth.instance,
-    ref: ref,
-  );
-});
+// final callControllerProvider = Provider((ref) {
+//   final callRepository = ref.read(callRepositoryProvider);
+//   return CallController(
+//     callRepository: callRepository,
+//     auth: FirebaseAuth.instance,
+//     ref: ref,
+//   );
+// });
 
-class CallScreen extends ConsumerStatefulWidget {
+class VoiceCallScreen extends ConsumerStatefulWidget {
   final String channelId;
   final Call call;
   final String id;
   final bool isGroupChat;
-  const CallScreen({
+  const VoiceCallScreen({
     Key? key,
     required this.channelId,
     required this.call,
@@ -29,10 +30,11 @@ class CallScreen extends ConsumerStatefulWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _CallScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _VoiceCallScreenState();
 }
 
-class _CallScreenState extends ConsumerState<CallScreen> {
+class _VoiceCallScreenState extends ConsumerState<VoiceCallScreen> {
   // AgoraClient? client;
   // String baseUrl = 'http://localhost:8080/';
 
@@ -67,7 +69,7 @@ class _CallScreenState extends ConsumerState<CallScreen> {
         userName: 'user${widget.id}',
         callID: widget.channelId,
         // You can also use groupVideo/groupVoice/oneOnOneVoice to make more types of calls.
-        config: ZegoUIKitPrebuiltCallConfig.groupVideoCall()
+        config: ZegoUIKitPrebuiltCallConfig.groupVoiceCall()
           ..onHangUp = () {
             Navigator.pop(context);
             ref

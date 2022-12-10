@@ -26,7 +26,12 @@ class OtpScreen extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: backgroundColor,
         elevation: 0,
-        title: const Text("Verifying Your Number"),
+        title: const Text(
+          "Verifying Your Number",
+          style: TextStyle(
+            fontFamily: 'Poppins',
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -34,7 +39,12 @@ class OtpScreen extends ConsumerWidget {
             const SizedBox(
               height: 10,
             ),
-            const Text('We have sent an SMS with a code'),
+            const Text(
+              'We have sent an SMS with a code',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+              ),
+            ),
             SizedBox(
               width: size.width * 0.5,
               child: TextField(

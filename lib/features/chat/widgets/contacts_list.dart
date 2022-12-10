@@ -38,7 +38,7 @@ class ContactsList extends ConsumerWidget {
                           arguments: {
                             'name': chatContactData.name,
                             'uid': chatContactData.contactId,
-                            'profilePic':chatContactData.profilePic
+                            'profilePic': chatContactData.profilePic
                           },
                         );
                       },
@@ -49,13 +49,19 @@ class ContactsList extends ConsumerWidget {
                             chatContactData.name,
                             style: const TextStyle(
                               fontSize: 18,
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
                             ),
                           ),
                           subtitle: Padding(
                             padding: const EdgeInsets.only(top: 6.0),
                             child: Text(
                               chatContactData.lastMessage,
-                              style: const TextStyle(fontSize: 15),
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Poppins',
+                                color: Colors.white54,
+                              ),
                             ),
                           ),
                           leading: CircleAvatar(
